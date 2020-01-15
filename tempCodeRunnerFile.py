@@ -14,11 +14,10 @@ icon = pygame.image.load('C:\\Users\\ahmed\\Desktop\\work\\Escape-The-Mountains\
 pygame.display.set_icon(icon)
 
 #player
-player = pygame.image.load('C:\\Users\\ahmed\\Desktop\\work\\Escape-The-Mountains\\123.png')
+player = pygame.image.load('C:\\Users\\ahmed\\Desktop\\work\\Escape-The-Mountains\\warrior.png')
 playerX = 300
 playerY = 40
-playerX_ch = 0
-playerY_ch = 0
+playerX_ch=0
 def player_fu(x,y):
     gDisplay.blit(player, (x, y))
 
@@ -34,29 +33,14 @@ while run:
 
         if event.type == pygame.QUIT:
             sys.exit()
-
-        #keyboard input algo for X
+        #keyboard input algo
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT:
-                playerX_ch = -2
-            if event.key == pygame.K_RIGHT:
-                playerX_ch = 2
+            if event.type == pygame.K_LEFT:
+                playerX_ch = 0.2
+            if event.type == pygame.K_RIGHT:
+                playerX_ch = 0.2
         if event.type == pygame.KEYUP:
-            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
-                playerX_ch = 0
-
-        #keyboard input algo for Y
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_UP:
-                playerY_ch = -2
-            if event.key == pygame.K_DOWN:
-                playerY_ch = 2
-        if event.type == pygame.KEYUP:
-            if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
-                playerY_ch = 0
-
-    playerY += playerY_ch
-    playerX += playerX_ch
+            playerX_ch = 1
+    playerY += playerX_ch
     player_fu(playerX, playerY)
-    
     pygame.display.update()

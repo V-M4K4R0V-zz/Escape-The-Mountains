@@ -14,7 +14,7 @@ icon = pygame.image.load('C:\\Users\\ahmed\\Desktop\\work\\Escape-The-Mountains\
 pygame.display.set_icon(icon)
 
 #player
-player = pygame.image.load('C:\\Users\\ahmed\\Desktop\\work\\Escape-The-Mountains\\123.png')
+player = pygame.image.load('C:\\Users\\ahmed\\Desktop\\work\\Escape-The-Mountains\\warrior.png')
 playerX = 300
 playerY = 40
 playerX_ch = 0
@@ -27,7 +27,7 @@ while run:
     #background
     background = "C:\\Users\\ahmed\\Desktop\\work\\Escape-The-Mountains\\pixie.png"
     B_image = pygame.image.load(background)
-    gDisplay.blit(B_image, [0, -180])
+    gDisplay.blit(B_image, [0, -0])
     #
     
     for event in pygame.event.get():
@@ -38,9 +38,9 @@ while run:
         #keyboard input algo for X
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                playerX_ch = -2
+                playerX_ch = -8
             if event.key == pygame.K_RIGHT:
-                playerX_ch = 2
+                playerX_ch = 8
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                 playerX_ch = 0
@@ -48,15 +48,24 @@ while run:
         #keyboard input algo for Y
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP:
-                playerY_ch = -2
+                playerY_ch = -8
             if event.key == pygame.K_DOWN:
-                playerY_ch = 2
+                playerY_ch = 8
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
                 playerY_ch = 0
-
-    playerY += playerY_ch
-    playerX += playerX_ch
-    player_fu(playerX, playerY)
-    
+    #window wall
+    if playerX >= 560:
+        playerX = 530
+    elif playerY >= 660:
+        playerY = 615
+    elif playerX <= 0:
+        playerX = 10
+    elif playerY <= 0:
+        playerY = 10
+    else: #moving
+        playerY += playerY_ch
+        playerX += playerX_ch
+        player_fu(playerX, playerY)
+        
     pygame.display.update()

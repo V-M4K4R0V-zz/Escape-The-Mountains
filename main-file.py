@@ -17,22 +17,20 @@ pygame.display.set_icon(icon)
 player = pygame.image.load('C:\\Users\\ahmed\\Desktop\\work\\Escape-The-Mountains\\characters\\demon1.png')
 playerX = 300
 playerY = 40
-playerX_ch = 0
-playerY_ch = 0
 
 """
-#player rich
+#player 2
 player2 = pygame.image.load('C:\\Users\\ahmed\\Desktop\\work\\Escape-The-Mountains\\ric.png')
-playerX1 = 50
-playerY1 = 20
-def player2_fu(x,y):
+playerX2 = 50
+playerY2 = 20
+def player_fu2(x,y):
     gDisplay.blit(player2, (x, y))
 """
-
+#PLAYER1 XY
 def player_fu(x,y):
     gDisplay.blit(player, (x, y))
 
-
+move = 8
 
 run = True
 while run:
@@ -47,62 +45,36 @@ while run:
         if event.type == pygame.QUIT:
             sys.exit()
 
-        #keyboard input algo for X
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT:
-                playerX_ch = -8
-            if event.key == pygame.K_RIGHT:
-                playerX_ch = 8
-        if event.type == pygame.KEYUP:
-            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
-                playerX_ch = 0
+    keys = pygame.key.get_pressed()
+    #moving X;
+    if keys[pygame.K_LEFT] and playerX > 2:
+        playerX -= move
+    if keys[pygame.K_RIGHT] and playerX < 1200:
+        playerX += move
+    #MOVING Y;
+    if keys[pygame.K_UP] and playerY > 2:
+        playerY -= move
+    if keys[pygame.K_DOWN] and playerY < 401:
+        playerY += move
 
-        #keyboard input algo for Y
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_UP:
-                playerY_ch = -8
-            if event.key == pygame.K_DOWN:
-                playerY_ch = 8
-        if event.type == pygame.KEYUP:
-            if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
-                playerY_ch = 0
+    player_fu(playerX, playerY)
+
+
+    """
+        #REC player2
+        
+        #moving X;
+        if keys[pygame.K_LEFT] and playerX2 > 2:
+            playerX2 -= move
+        if keys[pygame.K_RIGHT] and playerX2 < 1200:
+            playerX2 += move
+        
+        #MOVING Y;
+        if keys[pygame.K_UP] and playerY2 > 2:
+            playerY2 -= move
+        if keys[pygame.K_DOWN] and playerY2 < 401:
+            playerY2 += move
+        player_fu2(playerX2, playerY2)
         """
-        #REC
-        #keyboard input algo for X
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_a:
-                playerX1 += -8
-            if event.key == pygame.K_d:
-                playerX1 += 8
-        if event.type == pygame.KEYUP:
-            if event.key == pygame.K_a or event.key == pygame.K_d:
-                playerX1
-
-        #keyboard input algo for Y
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_w:
-                playerY1 += -8
-            if event.key == pygame.K_s:
-                playerY1 += 8
-        if event.type == pygame.KEYUP:
-            if event.key == pygame.K_w or event.key == pygame.K_s:
-                playerY1
-        """
-
-
-    #window wall
-    if playerX >= 1360:
-        playerX = 530
-    elif playerY >= 760:
-        playerY = 615
-    elif playerX <= 0:
-        playerX = 10
-    elif playerY <= 0:
-        playerY = 10
-    else: #moving
-        playerY += playerY_ch
-        playerX += playerX_ch
-        player_fu(playerX, playerY)
-        #player2_fu(playerX1, playerY1)
         
     pygame.display.update()

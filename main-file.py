@@ -10,11 +10,11 @@ gDisplay = pygame.display.set_mode(screen_s)
 pygame.display.set_caption('Escape The Mountain')
 
 #icon
-icon = pygame.image.load('C:\\Users\\ahmed\\Desktop\\work\\Escape-The-Mountains\\mountain.png')
+icon = pygame.image.load('C:\\Users\\ahmed\\Desktop\\work\\Escape-The-Mountains\\backgrounds\\mountain.png')
 pygame.display.set_icon(icon)
 
 #player
-player = pygame.image.load('C:\\Users\\ahmed\\Desktop\\work\\Escape-The-Mountains\\123.png')
+player = pygame.image.load('C:\\Users\\ahmed\\Desktop\\work\\Escape-The-Mountains\\characters\\demon1.png')
 playerX = 300
 playerY = 40
 playerX_ch = 0
@@ -37,7 +37,7 @@ def player_fu(x,y):
 run = True
 while run:
     #background
-    background = "C:\\Users\\ahmed\\Desktop\\work\\Escape-The-Mountains\\The_Hell.png"
+    background = "C:\\Users\\ahmed\\Desktop\\work\\Escape-The-Mountains\\backgrounds\\The_Hell.png"
     B_image = pygame.image.load(background)
     gDisplay.blit(B_image, [0, -0])
     #

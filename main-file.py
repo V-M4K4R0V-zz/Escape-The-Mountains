@@ -20,11 +20,11 @@ playerX = 350
 playerY = 401
 #enemy 1
 enemy = pygame.image.load('C:\\Users\\ahmed\\Desktop\\work\\Escape-The-Mountains\\characters\\warrior.png')
-enemyX = 50
+enemyX = random.randint(0, 1260)
 enemyY = 401
 
 enemy2 = pygame.image.load('C:\\Users\\ahmed\\Desktop\\work\\Escape-The-Mountains\\characters\\warrior.png')
-enemyX2 = 150
+enemyX2 = random.randint(0, 1260)
 enemyY2 = 401
 
 #PLAYER1 
@@ -68,11 +68,11 @@ while run:
         playerY += 10
         jump = False
     #------------------------------ENEMY1-----------------------------------------#
-    enemyX = 50
-    enemyY = 401
+    #enemyX = random.randint(0, 1300)
+    #enemyY = 401
     #------------------------------ENEMY2-----------------------------------------#
-    enemyX2 = 120
-    enemyY2 = 401
+    #enemyX2 = random.randint(0, 1300)
+    #enemyY2 = 401
     #-----------------------------------------------------------------------------#
     
     gDisplay.blit(enemy, (enemyX, enemyY))

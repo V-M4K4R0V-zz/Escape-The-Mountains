@@ -1,15 +1,16 @@
 import pygame
 import sys
 import pygameMenu
+import random
 
 pygame.init()
 
 #window
 screen_s = (1300, 760)
-gDisplay = pygame.display.set_mode(screen_s)
+gDisplay = pygame.display.set_mode((screen_s)) #, pygame.FULLSCREEN)
 pygame.display.set_caption('Escape The Mountain')
 
-#icon
+#game icon
 icon = pygame.image.load('C:\\Users\\ahmed\\Desktop\\work\\Escape-The-Mountains\\backgrounds\\mountain.png')
 pygame.display.set_icon(icon)
 
@@ -17,16 +18,16 @@ pygame.display.set_icon(icon)
 player = pygame.image.load('C:\\Users\\ahmed\\Desktop\\work\\Escape-The-Mountains\\characters\\demon1.png')
 playerX = 350
 playerY = 401
+#enemy 1
+enemy = pygame.image.load('C:\\Users\\ahmed\\Desktop\\work\\Escape-The-Mountains\\characters\\warrior.png')
+enemyX = 50
+enemyY = 401
 
-"""
-#player 2
-player2 = pygame.image.load('C:\\Users\\ahmed\\Desktop\\work\\Escape-The-Mountains\\ric.png')
-playerX2 = 50
-playerY2 = 20
-def player_fu2(x,y):
-    gDisplay.blit(player2, (x, y))
-"""
-#PLAYER1 XY
+enemy2 = pygame.image.load('C:\\Users\\ahmed\\Desktop\\work\\Escape-The-Mountains\\characters\\warrior.png')
+enemyX2 = 150
+enemyY2 = 401
+
+#PLAYER1 
 def player_fu(x,y):
     gDisplay.blit(player, (x, y))
 
@@ -45,7 +46,7 @@ while run:
 
         if event.type == pygame.QUIT:
             sys.exit()
-
+    #------------------------------PLAYER MOVEMENT----------------------------------------#
     keys = pygame.key.get_pressed()
     #moving X;
     if keys[pygame.K_LEFT] and playerX > 2:
@@ -66,24 +67,17 @@ while run:
     elif playerY > 2 and playerY < 401:
         playerY += 10
         jump = False
-
-
+    #------------------------------ENEMY1-----------------------------------------#
+    enemyX = 50
+    enemyY = 401
+    #------------------------------ENEMY2-----------------------------------------#
+    enemyX2 = 120
+    enemyY2 = 401
+    #-----------------------------------------------------------------------------#
+    
+    gDisplay.blit(enemy, (enemyX, enemyY))
+    gDisplay.blit(enemy2, (enemyX2, enemyY2))
     player_fu(playerX, playerY)
-
-    """
-        #REC player2
-        #moving X;
-        if keys[pygame.K_LEFT] and playerX2 > 2:
-            playerX2 -= move
-        if keys[pygame.K_RIGHT] and playerX2 < 1200:
-            playerX2 += move
-        
-        #MOVING Y;
-        if keys[pygame.K_UP] and playerY2 > 2:
-            playerY2 -= move
-        if keys[pygame.K_DOWN] and playerY2 < 401:
-            playerY2 += move
-        player_fu2(playerX2, playerY2)
-        """
-        
+    
+    #screen update  
     pygame.display.update()

@@ -13,19 +13,21 @@ pygame.display.set_caption('Escape The Mountain')
 #game icon
 icon = pygame.image.load('C:\\Users\\ahmed\\Desktop\\work\\Escape-The-Mountains\\backgrounds\\mountain.png')
 pygame.display.set_icon(icon)
-
-#player
+#--------------------------------------------OBJECTS-------------------------------------------#
+#--------------------------------------------player
 player = pygame.image.load('C:\\Users\\ahmed\\Desktop\\work\\Escape-The-Mountains\\characters\\demon1.png')
 playerX = 350
 playerY = 401
-#enemy 1
+#--------------------------------------------enemy 1
 enemy = pygame.image.load('C:\\Users\\ahmed\\Desktop\\work\\Escape-The-Mountains\\characters\\warrior.png')
 enemyX = random.randint(0, 1260)
 enemyY = 401
-
+#--------------------------------------------enemy 2
 enemy2 = pygame.image.load('C:\\Users\\ahmed\\Desktop\\work\\Escape-The-Mountains\\characters\\warrior.png')
 enemyX2 = random.randint(0, 1260)
 enemyY2 = 401
+#--------------------------------------------weapons-------------------------------------------#
+weapon = pygame.image.load('C:\\Users\\ahmed\\Desktop\\work\\Escape-The-Mountains\\characters\\spear.png')
 
 #PLAYER1 
 def player_fu(x,y):
@@ -67,6 +69,15 @@ while run:
     elif playerY > 2 and playerY < 401:
         playerY += 10
         jump = False
+
+    #-------------------weapon inc
+    forward = True
+    if keys[pygame.K_c]:
+        forward = playerX + 20
+        gDisplay.blit(weapon, (forward, playerY + 15))
+    elif forward > 2 and forward < 1200:
+        forward += 50 
+        gDisplay.blit(weapon, (forward, playerY + 15))
     #------------------------------ENEMY1-----------------------------------------#
     #enemyX = random.randint(0, 1300)
     #enemyY = 401

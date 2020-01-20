@@ -28,10 +28,18 @@ enemyX2 = random.randint(0, 1260)
 enemyY2 = 401
 #--------------------------------------------weapons-------------------------------------------#
 weapon = pygame.image.load('C:\\Users\\ahmed\\Desktop\\work\\Escape-The-Mountains\\characters\\spear.png')
+bullX = playerX + 40
+B_X_move = True
+bull_state = "ready"
 
 #PLAYER1 
 def player_fu(x,y):
     gDisplay.blit(player, (x, y))
+
+def fire_cordinates(x,y):
+    global bull_state
+    bull_state = "fire"
+    gDisplay.blit(weapon, (x, y))
 
 move = 8
 run = True
@@ -63,21 +71,28 @@ while run:
         playerY += move
     """
     #jumping 
-    if keys[pygame.K_SPACE]:
-        jump = playerY - 30
-        playerY = jump   
+    if event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_SPACE:
+            jump = playerY - 30
+            playerY = jump   
     elif playerY > 2 and playerY < 401:
         playerY += 10
         jump = False
 
     #-------------------weapon inc
-    forward = True
-    if keys[pygame.K_c]:
-        forward = playerX + 20
-        gDisplay.blit(weapon, (forward, playerY + 15))
-    elif forward > 2 and forward < 1200:
-        forward += 50 
-        gDisplay.blit(weapon, (forward, playerY + 15))
+    if event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_UP:
+            fire_cordinates(playerX + 40, playerY + 60)
+
+    if bull_state is "fire":
+        fire_cordinates(bullX, playerY + 40)
+        bullX += B_X_move + 30
+
+    if bullX >= 1000:
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_UP:
+                bullX = playerX
+
     #------------------------------ENEMY1-----------------------------------------#
     #enemyX = random.randint(0, 1300)
     #enemyY = 401

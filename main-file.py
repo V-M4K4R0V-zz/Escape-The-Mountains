@@ -59,9 +59,12 @@ while run:
     keys = pygame.key.get_pressed()
     #moving X;
     if keys[pygame.K_LEFT] and playerX > 2:
+        player = pygame.image.load('C:\\Users\\ahmed\\Desktop\\work\\Escape-The-Mountains\\characters\\demon1.png')
         playerX -= move
     if keys[pygame.K_RIGHT] and playerX < 1200:
+        player = pygame.image.load('C:\\Users\\ahmed\\Desktop\\work\\Escape-The-Mountains\\characters\\leftdem.png')
         playerX += move
+
     """
     #MOVING Y;
     if keys[pygame.K_UP] and playerY > 2:
@@ -70,14 +73,11 @@ while run:
         playerY += move
     """
     #-----------------------------jumping-------------------------------------# 
-    Cj = 1
-    if event.type == pygame.KEYDOWN and Cj ==1:
-        while True:
-            if event.key == pygame.K_SPACE and Cj == 1:
-                Cj = Cj + 1
-                jump = playerY - 30
-                playerY = jump
-        break 
+    if event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_SPACE and Cj == 1:
+            Cj = Cj + 1
+            jump = playerY - 30
+            playerY = jump
     elif playerY > 2 and playerY < 401:
         playerY += 10
         jump = False
@@ -94,7 +94,6 @@ while run:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP:
                 bullX = playerX
-
     #------------------------------ENEMY1-----------------------------------------#
     #enemyX = random.randint(0, 1300)
     #enemyY = 401

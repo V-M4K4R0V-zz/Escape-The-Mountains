@@ -9,7 +9,7 @@ screen_s = (1300, 760)
 gDisplay = pygame.display.set_mode((screen_s)) #, pygame.FULLSCREEN)
 pygame.display.set_caption('Escape The Mountain')
 
-#game icon
+#---------------------------------------------game icon------------------------------------------#
 icon = pygame.image.load('C:\\Users\\ahmed\\Desktop\\work\\Escape-The-Mountains\\backgrounds\\mountain.png')
 pygame.display.set_icon(icon)
 #--------------------------------------------OBJECTS-------------------------------------------#
@@ -74,20 +74,20 @@ while run:
     """
     #-----------------------------jumping-------------------------------------# 
     if event.type == pygame.KEYDOWN:
-        if event.key == pygame.K_SPACE and Cj == 1:
-            Cj = Cj + 1
+        if event.key == pygame.K_SPACE:
             jump = playerY - 30
             playerY = jump
+
     elif playerY > 2 and playerY < 401:
         playerY += 10
         jump = False
     #-------------------weapon inc------------------------------#
     if event.type == pygame.KEYDOWN:
         if event.key == pygame.K_UP:
-            fire_cordinates(playerX + 40, playerY + 60)
+            fire_cordinates(playerX + 20, playerY + 60)
 
     if bull_state is "fire":
-        fire_cordinates(bullX, playerY + 40)
+        fire_cordinates(bullX, 450)
         bullX += B_X_move + 70
 
     if bullX >= 1000:
